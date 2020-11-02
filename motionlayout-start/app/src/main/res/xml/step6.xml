@@ -53,17 +53,33 @@
                     android:scaleY="2.0"
                     android:scaleX="2.0"
                     android:rotation="-360"
-            />
+            >
+                <CustomAttribute
+                    motion:attributeName="colorFilter"
+                    motion:customColorValue="#FFB612" />
+            </KeyAttribute>
             <KeyAttribute
                     motion:framePosition="100"
                     motion:motionTarget="@id/moon"
                     android:rotation="-720"
-            />
+            >
+                <CustomAttribute
+                    motion:attributeName="colorFilter"
+                    motion:customColorValue="#FFFFFF" />
+            </KeyAttribute>
             <KeyAttribute
                     motion:framePosition="85"
                     motion:motionTarget="@id/credits"
                     android:alpha="0.0"
             />
+
+            <KeyAttribute
+                motion:motionTarget="@+id/moon"
+                motion:framePosition="0">
+                <CustomAttribute
+                    motion:attributeName="colorFilter"
+                    motion:customColorValue="#FFFFFF" />
+            </KeyAttribute>
 
             <!-- TODO Add Custom attributes here -->
 

@@ -16,19 +16,28 @@
 package com.google.samples.motionlayoutcodelab
 
 import android.os.Bundle
-import android.util.TypedValue
-import android.view.View
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.widget.MotionLayout
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.activity_step8_completed.*
+
 
 class Step8CompletedActivity : AppCompatActivity() {
+
+    lateinit var fab: FloatingActionButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_step8_completed)
-
+        fab = faButton
+        fab.setOnClickListener {
+            Snackbar.make(it, "This is a simple Snackbar", Snackbar.LENGTH_LONG)
+                .setAction("CLOSE") {
+                    // Custom action
+                }.show()
+        }
         coordinateMotion()
     }
 

@@ -29,6 +29,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.reflect.KClass
+import kotlinx.android.synthetic.main.activity_main.*
+
 
 data class Step(
     val number: String,
@@ -89,7 +91,14 @@ private val data = listOf(
         "Changes applied from step 8",
         Step8CompletedActivity::class,
         highlight = true
+    ),
+    Step("Custom: Step 9",
+        "My own custom animation",
+        "Putting all together",
+            CustomAnimationActivity::class,
+        highlight = true
     )
+
 )
 
 class MainActivity : AppCompatActivity() {
@@ -98,13 +107,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
+//        val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
+        val recyclerView: RecyclerView = recycler_view
         recyclerView.adapter = MainAdapter(data)
     }
 
 }
 
-class MainAdapter(val data: List<Step>) : RecyclerView.Adapter<MainViewHolder>() {
+class MainAdapter(private val data: List<Step>) : RecyclerView.Adapter<MainViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
         return MainViewHolder(view as CardView)
@@ -118,10 +129,10 @@ class MainAdapter(val data: List<Step>) : RecyclerView.Adapter<MainViewHolder>()
 
 }
 
-class MainViewHolder(val cardView: CardView) : RecyclerView.ViewHolder(cardView) {
-    val header: TextView = cardView.findViewById(R.id.header)
-    val description: TextView = cardView.findViewById(R.id.description)
-    val caption: TextView = cardView.findViewById(R.id.caption)
+class MainViewHolder(private val cardView: CardView) : RecyclerView.ViewHolder(cardView) {
+    private val header: TextView = cardView.findViewById(R.id.header)
+    private val description: TextView = cardView.findViewById(R.id.description)
+    private val caption: TextView = cardView.findViewById(R.id.caption)
 
     fun bind(step: Step) {
         header.text = step.number
@@ -141,7 +152,7 @@ class MainViewHolder(val cardView: CardView) : RecyclerView.ViewHolder(cardView)
         description.setTextColor(color)
     }
 
-    fun getColor(@ColorRes colorResId: Int, context: Context): Int {
+    private fun getColor(@ColorRes colorResId: Int, context: Context): Int {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             context.resources.getColor(colorResId, context.theme)
         } else {

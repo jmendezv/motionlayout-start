@@ -26,8 +26,28 @@
                 motion:targetId="@id/moon"
                 motion:clickAction="toggle"
         />
+        <KeyFrameSet >
+            <KeyPosition
+                motion:motionTarget="@+id/moon"
+                motion:framePosition="50"
+                motion:keyPositionType="parentRelative"
+                motion:percentY=".25"
+                motion:percentX=".30"
+                motion:curveFit="spline" />
+            <KeyPosition
+                motion:motionTarget="@+id/credits"
+                motion:framePosition="50"
+                motion:keyPositionType="parentRelative"
+                motion:percentX=".15"
+                motion:percentY=".35" />
+            <KeyPosition
+                motion:motionTarget="@+id/moon"
+                motion:framePosition="75"
+                motion:keyPositionType="parentRelative"
+                motion:percentX="0.15"
+                motion:percentY="0.15" />
 
-        <!-- TODO: Add KeyFrameSet and KeyPosition -->
+        </KeyFrameSet>
     </Transition>
 
     <!-- Constraints to apply at the start of the animation -->
@@ -47,8 +67,7 @@
                 android:layout_marginStart="16dp"
                 motion:layout_constraintStart_toStartOf="parent"
                 motion:layout_constraintBottom_toBottomOf="@id/moon"
-                motion:layout_constraintTop_toTopOf="@id/moon"
-        />
+            motion:layout_constraintTop_toBottomOf="@+id/moon" />
     </ConstraintSet>
 
     <!-- Constraints to apply at the end of the animation -->
@@ -65,10 +84,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:alpha="1.0"
-                android:layout_marginStart="16dp"
-                motion:layout_constraintStart_toStartOf="parent"
-                motion:layout_constraintBottom_toBottomOf="@id/moon"
-                motion:layout_constraintTop_toTopOf="@id/moon"
-        />
+            motion:layout_constraintBottom_toBottomOf="@id/moon"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toBottomOf="parent" />
     </ConstraintSet>
 </MotionScene>

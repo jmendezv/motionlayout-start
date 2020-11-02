@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+A motion scene is a single XML file that describes an animation in a MotionLayout
+
+All animations can be defined in terms of a start and an end.
+
+The start describes what the screen looks like before the animation, and the end describes what
+the screen looks like after the animation has completed.
+
+MotionLayout is responsible for figuring out how to animate between the start and end state
+(over time).
+
+-->
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@+id/start"
+        motion:duration="3000"
+        motion:pathMotionArc="startHorizontal">
+       <KeyFrameSet>
+       </KeyFrameSet>
+        <OnClick motion:targetId="@+id/red_star"
+            motion:clickAction="toggle" />
+    </Transition>
+
+    <!--
+    A set of constraints that can be applied to views
+    Constraint sets only contain the constraints or layout information such as width, height, alpha,
+    or visibility
+    -->
+    <ConstraintSet android:id="@id/start">
+        <Constraint
+            android:id="@+id/red_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="16dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:rotation="-352" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@id/end">
+        <Constraint
+            android:id="@+id/red_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="76dp"
+            android:layout_marginBottom="120dp"
+            android:alpha="0"
+            android:rotation="336"
+            android:scaleX=".5"
+            android:scaleY=".5"
+            android:layout_marginRight="76dp" />
+    </ConstraintSet>
+
+</MotionScene>
