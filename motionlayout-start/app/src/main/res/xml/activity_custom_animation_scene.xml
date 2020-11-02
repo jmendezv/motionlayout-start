@@ -7,8 +7,18 @@
         motion:constraintSetEnd="@+id/end"
         motion:constraintSetStart="@id/start"
         motion:duration="1000"
-        motion:motionInterpolator="linear">
+        motion:motionInterpolator="cubic(0.08,0.66,0.8,0.8)">
        <KeyFrameSet>
+           <KeyPosition
+               motion:motionTarget="@+id/imageView"
+               motion:framePosition="50"
+               motion:keyPositionType="parentRelative"
+               motion:percentX=".25"
+               motion:percentY=".25" />
+           <KeyAttribute
+               motion:motionTarget="@+id/imageView"
+               motion:framePosition="50"
+               android:rotation="45" />
        </KeyFrameSet>
         <OnClick
             motion:targetId="@+id/imageView"
